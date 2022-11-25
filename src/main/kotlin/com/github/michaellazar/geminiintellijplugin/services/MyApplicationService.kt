@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.michaellazar.geminiintellijplugin.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.michaellazar.geminiintellijplugin.MyBundle
 
 class MyApplicationService {
 
