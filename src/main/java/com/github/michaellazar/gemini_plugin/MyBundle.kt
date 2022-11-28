@@ -1,4 +1,4 @@
-package com.github.michaellazar.geminiintellijplugin
+package com.github.michaellazar.gemini_plugin
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

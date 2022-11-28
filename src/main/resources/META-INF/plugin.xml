@@ -6,7 +6,16 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileType name="Gemini File" implementationClass="com.github.michaellazar.gemini_plugin.GeminiFileType"
-                  fieldName="INSTANCE" language="Gemini" extensions="gmi"/>
+        <fileType
+            name="Gemini File"
+            implementationClass="com.github.michaellazar.gemini_plugin.GeminiFileType"
+            fieldName="INSTANCE"
+            language="Gemini"
+            extensions="gmi"
+        />
+        <lang.parserDefinition
+            language="Gemini"
+            implementationClass="com.github.michaellazar.gemini_plugin.GeminiParserDefinition"
+        />
     </extensions>
 </idea-plugin>
