@@ -6,6 +6,6 @@ import javax.swing.*;
 
 public class GeminiIcons {
 
-    public static final Icon FILE = IconLoader.getIcon("/icons/jar-gray.png", GeminiIcons.class);
+    public static final Icon FILE = IconLoader.getIcon("/icons/GeminiPlugin.svg", GeminiIcons.class);
 
 }
