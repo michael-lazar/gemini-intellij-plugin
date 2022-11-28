@@ -1,0 +1,20 @@
+{
+  parserClass="com.github.michaellazar.gemini_plugin.parser.GeminiParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Gemini"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.github.michaellazar.gemini_plugin.psi"
+  psiImplPackage="com.github.michaellazar.gemini_plugin.psi.impl"
+
+  elementTypeHolderClass="com.github.michaellazar.gemini_plugin.psi.GeminiTypes"
+  elementTypeClass="com.github.michaellazar.gemini_plugin.psi.GeminiElementType"
+  tokenTypeClass="com.github.michaellazar.gemini_plugin.psi.GeminiTokenType"
+}
+
+geminiFile ::= item_*
+
+private item_ ::= (property|COMMENT|CRLF)
+
+property ::= (KEY? SEPARATOR VALUE?) | KEY
