@@ -17,5 +17,12 @@
             language="Gemini"
             implementationClass="com.github.michaellazar.gemini_plugin.GeminiParserDefinition"
         />
+        <lang.syntaxHighlighterFactory
+            language="Gemini"
+            implementationClass="com.github.michaellazar.gemini_plugin.GeminiSyntaxHighlighterFactory"
+        />
+        <colorSettingsPage
+            implementation="com.github.michaellazar.gemini_plugin.GeminiColorSettingsPage"
+        />
     </extensions>
 </idea-plugin>
