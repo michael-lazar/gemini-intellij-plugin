@@ -23,7 +23,7 @@ public class GeminiFileType extends LanguageFileType {
     @NotNull
     @Override
     public String getDescription() {
-        return "Gemini language file";
+        return "Gemini markup file";
     }
 
     @NotNull

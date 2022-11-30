@@ -23,7 +23,19 @@ class GeminiLexer implements FlexLexer {
 
   /** lexical states */
   public static final int YYINITIAL = 0;
-  public static final int WAITING_VALUE = 2;
+  public static final int WAITING_H1_TEXT = 2;
+  public static final int WAITING_H2_TEXT = 4;
+  public static final int WAITING_H3_TEXT = 6;
+  public static final int WAITING_QUOTE_TEXT = 8;
+  public static final int WAITING_ULIST_TEXT = 10;
+  public static final int WAITING_PLAIN_TEXT = 12;
+  public static final int WAITING_LINK_URL = 14;
+  public static final int WAITING_LINK_SP = 16;
+  public static final int WAITING_LINK_TEXT = 18;
+  public static final int WAITING_PRE_ALT = 20;
+  public static final int WAITING_PRE_TEXT = 22;
+  public static final int WAITING_PRE_CRLF = 24;
+  public static final int WAITING_CRLF = 26;
 
   /**
    * ZZ_LEXSTATE[l] is the state in the DFA for the lexical state l
@@ -32,30 +44,31 @@ class GeminiLexer implements FlexLexer {
    * l is of the form l = 2*k, k a non negative integer
    */
   private static final int ZZ_LEXSTATE[] = { 
-     0,  0,  1, 1
+     0,  0,  1,  1,  2,  2,  3,  3,  4,  4,  5,  5,  6,  6,  7,  7, 
+     8,  8,  9,  9, 10, 10, 11, 11, 12, 12, 13, 13
   };
 
   /** 
    * Translates characters to character classes
-   * Chosen bits are [9, 6, 6]
-   * Total runtime size is 1568 bytes
+   * Chosen bits are [7, 7, 7]
+   * Total runtime size is 1928 bytes
    */
   public static int ZZ_CMAP(int ch) {
-    return ZZ_CMAP_A[(ZZ_CMAP_Y[ZZ_CMAP_Z[ch>>12]|((ch>>6)&0x3f)]<<6)|(ch&0x3f)];
+    return ZZ_CMAP_A[(ZZ_CMAP_Y[ZZ_CMAP_Z[ch>>14]|((ch>>7)&0x7f)]<<7)|(ch&0x7f)];
   }
 
-  /* The ZZ_CMAP_Z table has 272 entries */
+  /* The ZZ_CMAP_Z table has 68 entries */
   static final char ZZ_CMAP_Z[] = zzUnpackCMap(
-    "\1\0\1\100\1\200\u010d\100");
+    "\1\0\103\200");
 
-  /* The ZZ_CMAP_Y table has 192 entries */
+  /* The ZZ_CMAP_Y table has 256 entries */
   static final char ZZ_CMAP_Y[] = zzUnpackCMap(
-    "\1\0\1\1\1\2\175\3\1\4\77\3");
+    "\1\0\1\1\53\2\1\3\22\2\1\4\37\2\1\3\237\2");
 
-  /* The ZZ_CMAP_A table has 320 entries */
+  /* The ZZ_CMAP_A table has 640 entries */
   static final char ZZ_CMAP_A[] = zzUnpackCMap(
-    "\11\0\1\4\1\2\1\1\1\5\1\3\22\0\1\7\1\10\1\0\1\10\26\0\1\11\2\0\1\11\36\0\1"+
-    "\6\50\0\1\1\242\0\2\1\26\0");
+    "\11\4\1\0\1\2\2\0\1\3\22\4\1\1\2\4\1\5\6\4\1\7\22\4\1\11\1\6\41\4\1\10\44"+
+    "\4\1\0\32\4\1\0\337\4\1\0\177\4\13\0\35\4\2\0\5\4\1\0\57\4\1\0\40\4");
 
   /** 
    * Translates DFA states to action switch labels.
@@ -63,11 +76,14 @@ class GeminiLexer implements FlexLexer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\2\0\2\1\1\2\1\3\1\4\1\5\2\6\2\7"+
-    "\1\3\1\7\1\0\2\4\1\0\1\2\2\6";
+    "\16\0\1\1\1\2\1\3\1\4\1\5\3\1\1\6"+
+    "\1\7\1\10\1\11\1\12\1\13\1\3\1\14\1\15"+
+    "\1\16\1\17\1\20\1\3\2\21\1\4\1\22\1\5"+
+    "\1\23\1\0\1\24\1\21\1\22\1\25\1\26\1\24"+
+    "\1\27\1\25";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[21];
+    int [] result = new int[50];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -93,11 +109,15 @@ class GeminiLexer implements FlexLexer {
 
   private static final String ZZ_ROWMAP_PACKED_0 =
     "\0\0\0\12\0\24\0\36\0\50\0\62\0\74\0\106"+
-    "\0\120\0\132\0\50\0\144\0\156\0\170\0\62\0\202"+
-    "\0\214\0\156\0\132\0\226\0\240";
+    "\0\120\0\132\0\144\0\156\0\170\0\202\0\214\0\214"+
+    "\0\226\0\240\0\252\0\264\0\276\0\310\0\322\0\334"+
+    "\0\346\0\360\0\372\0\u0104\0\214\0\u010e\0\214\0\u0118"+
+    "\0\u0122\0\214\0\u012c\0\u0136\0\u0140\0\214\0\u014a\0\214"+
+    "\0\214\0\u0154\0\u015e\0\u0168\0\214\0\u0172\0\214\0\214"+
+    "\0\u017c\0\214";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[21];
+    int [] result = new int[50];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -120,22 +140,26 @@ class GeminiLexer implements FlexLexer {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\3\1\4\1\5\1\4\2\5\1\6\1\5\1\7"+
-    "\1\10\1\11\1\12\1\13\1\12\1\14\1\13\1\15"+
-    "\1\16\2\11\2\3\1\0\1\3\2\0\1\17\1\0"+
-    "\1\3\1\0\1\3\1\4\1\5\1\4\2\5\1\17"+
-    "\1\5\1\3\2\0\5\5\1\0\1\5\11\0\1\3"+
-    "\2\0\2\7\1\0\1\3\2\20\1\21\1\20\1\7"+
-    "\1\20\12\0\2\11\1\0\2\11\1\0\1\22\4\11"+
-    "\1\23\1\5\2\23\1\5\1\22\1\23\3\11\1\24"+
-    "\1\16\1\24\1\14\1\16\1\22\1\14\5\11\1\25"+
-    "\6\11\1\0\1\5\1\16\1\5\2\16\1\0\1\16"+
-    "\2\0\2\20\2\0\10\20\2\0\3\20\1\7\2\20"+
-    "\1\11\1\24\1\5\2\24\1\5\1\22\1\24\7\11"+
-    "\1\0\1\22\3\11";
+    "\2\17\1\20\1\21\1\17\1\22\1\23\1\24\1\25"+
+    "\1\26\2\27\1\20\1\21\6\27\2\30\1\20\1\21"+
+    "\6\30\2\31\1\20\1\21\6\31\2\32\1\20\1\21"+
+    "\6\32\2\33\1\20\1\21\6\33\2\34\1\20\1\21"+
+    "\6\34\4\35\6\36\1\35\1\37\1\20\1\21\6\35"+
+    "\2\40\1\20\1\21\6\40\2\41\1\42\1\43\6\41"+
+    "\2\44\1\42\1\43\4\44\1\45\1\44\2\35\1\42"+
+    "\1\43\10\35\1\20\1\21\6\35\14\0\1\20\10\0"+
+    "\1\46\3\0\1\47\5\0\1\50\11\0\1\51\20\0"+
+    "\1\52\7\0\1\53\3\0\2\27\2\0\6\27\2\30"+
+    "\2\0\6\30\2\31\2\0\6\31\2\32\2\0\6\32"+
+    "\2\33\2\0\6\33\2\34\2\0\6\34\4\0\6\36"+
+    "\2\40\2\0\6\40\2\41\2\0\6\41\2\0\1\42"+
+    "\7\0\2\44\2\0\10\44\2\0\4\44\1\54\1\44"+
+    "\1\0\1\55\3\0\1\56\14\0\1\57\2\0\1\60"+
+    "\10\0\2\44\2\0\4\44\1\61\1\44\1\0\1\62"+
+    "\10\0\2\61\2\0\6\61";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[170];
+    int [] result = new int[390];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -173,10 +197,12 @@ class GeminiLexer implements FlexLexer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\2\0\5\1\1\11\6\1\1\0\2\1\1\0\3\1";
+    "\16\0\2\11\14\1\1\11\1\1\1\11\2\1\1\11"+
+    "\3\1\1\11\1\1\2\11\1\0\2\1\1\11\1\1"+
+    "\2\11\1\1\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[21];
+    int [] result = new int[50];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -490,40 +516,120 @@ class GeminiLexer implements FlexLexer {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { yybegin(YYINITIAL); return GeminiTypes.KEY;
+            { yybegin(WAITING_PLAIN_TEXT); return GeminiTypes.PLAIN_HEADER;
             } 
             // fall through
-          case 8: break;
+          case 24: break;
           case 2: 
             { yybegin(YYINITIAL); return TokenType.WHITE_SPACE;
             } 
             // fall through
-          case 9: break;
+          case 25: break;
           case 3: 
             { return TokenType.BAD_CHARACTER;
             } 
             // fall through
-          case 10: break;
+          case 26: break;
           case 4: 
-            { yybegin(YYINITIAL); return GeminiTypes.COMMENT;
+            { yybegin(WAITING_H1_TEXT); return GeminiTypes.H1_HEADER;
             } 
             // fall through
-          case 11: break;
+          case 27: break;
           case 5: 
-            { yybegin(WAITING_VALUE); return GeminiTypes.SEPARATOR;
+            { yybegin(WAITING_QUOTE_TEXT); return GeminiTypes.QUOTE_HEADER;
             } 
             // fall through
-          case 12: break;
+          case 28: break;
           case 6: 
-            { yybegin(YYINITIAL); return GeminiTypes.VALUE;
+            { yybegin(WAITING_CRLF); return GeminiTypes.H1_TEXT;
             } 
             // fall through
-          case 13: break;
+          case 29: break;
           case 7: 
-            { yybegin(WAITING_VALUE); return TokenType.WHITE_SPACE;
+            { yybegin(WAITING_CRLF); return GeminiTypes.H2_TEXT;
             } 
             // fall through
-          case 14: break;
+          case 30: break;
+          case 8: 
+            { yybegin(WAITING_CRLF); return GeminiTypes.H3_TEXT;
+            } 
+            // fall through
+          case 31: break;
+          case 9: 
+            { yybegin(WAITING_CRLF); return GeminiTypes.QUOTE_TEXT;
+            } 
+            // fall through
+          case 32: break;
+          case 10: 
+            { yybegin(WAITING_CRLF); return GeminiTypes.ULIST_TEXT;
+            } 
+            // fall through
+          case 33: break;
+          case 11: 
+            { yybegin(WAITING_CRLF); return GeminiTypes.PLAIN_TEXT;
+            } 
+            // fall through
+          case 34: break;
+          case 12: 
+            { yybegin(WAITING_LINK_SP); return GeminiTypes.LINK_URL;
+            } 
+            // fall through
+          case 35: break;
+          case 13: 
+            { yybegin(WAITING_LINK_TEXT); return TokenType.WHITE_SPACE;
+            } 
+            // fall through
+          case 36: break;
+          case 14: 
+            { yybegin(WAITING_CRLF); return GeminiTypes.LINK_TEXT;
+            } 
+            // fall through
+          case 37: break;
+          case 15: 
+            { yybegin(WAITING_PRE_CRLF); return GeminiTypes.PRE_ALT;
+            } 
+            // fall through
+          case 38: break;
+          case 16: 
+            { yybegin(WAITING_PRE_TEXT); return TokenType.WHITE_SPACE;
+            } 
+            // fall through
+          case 39: break;
+          case 17: 
+            { yybegin(WAITING_PRE_CRLF); return GeminiTypes.PRE_TEXT;
+            } 
+            // fall through
+          case 40: break;
+          case 18: 
+            { yybegin(WAITING_H2_TEXT); return GeminiTypes.H2_HEADER;
+            } 
+            // fall through
+          case 41: break;
+          case 19: 
+            { yybegin(WAITING_ULIST_TEXT); return GeminiTypes.ULIST_HEADER;
+            } 
+            // fall through
+          case 42: break;
+          case 20: 
+            { yybegin(WAITING_LINK_URL); return GeminiTypes.LINK_HEADER;
+            } 
+            // fall through
+          case 43: break;
+          case 21: 
+            { yybegin(WAITING_H3_TEXT); return GeminiTypes.H3_HEADER;
+            } 
+            // fall through
+          case 44: break;
+          case 22: 
+            { yybegin(WAITING_PRE_ALT); return GeminiTypes.PRE_HEADER;
+            } 
+            // fall through
+          case 45: break;
+          case 23: 
+            { yybegin(WAITING_CRLF); return GeminiTypes.PRE_FOOTER;
+            } 
+            // fall through
+          case 46: break;
           default:
             zzScanError(ZZ_NO_MATCH);
           }

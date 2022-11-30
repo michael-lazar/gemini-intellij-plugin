@@ -12,7 +12,6 @@ import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
 import com.github.michaellazar.gemini_plugin.parser.GeminiParser;
 import com.github.michaellazar.gemini_plugin.psi.GeminiFile;
-import com.github.michaellazar.gemini_plugin.psi.GeminiTokenSets;
 import com.github.michaellazar.gemini_plugin.psi.GeminiTypes;
 import org.jetbrains.annotations.NotNull;
 
@@ -29,7 +28,7 @@ public class GeminiParserDefinition implements ParserDefinition {
     @NotNull
     @Override
     public TokenSet getCommentTokens() {
-        return GeminiTokenSets.COMMENTS;
+        return TokenSet.EMPTY;
     }
 
     @NotNull

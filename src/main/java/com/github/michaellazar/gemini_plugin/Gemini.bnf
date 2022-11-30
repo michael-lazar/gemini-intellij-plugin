@@ -13,8 +13,15 @@
   tokenTypeClass="com.github.michaellazar.gemini_plugin.psi.GeminiTokenType"
 }
 
-geminiFile ::= item_*
+geminiFile ::= line*
 
-private item_ ::= (property|COMMENT|CRLF)
+line ::= (h3|h2|h1|quote|ulist|link|pre|plaintext)
 
-property ::= (KEY? SEPARATOR VALUE?) | KEY
+h1 ::= H1_HEADER H1_TEXT?
+h2 ::= H2_HEADER H2_TEXT?
+h3 ::= H3_HEADER H3_TEXT?
+quote ::= QUOTE_HEADER QUOTE_TEXT?
+ulist ::= ULIST_HEADER ULIST_TEXT?
+link ::= LINK_HEADER LINK_URL LINK_TEXT?
+pre ::= PRE_HEADER PRE_ALT? PRE_TEXT* PRE_FOOTER
+plaintext ::= PLAIN_HEADER PLAIN_TEXT?

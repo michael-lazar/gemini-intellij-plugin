@@ -14,9 +14,23 @@ import java.util.Map;
 public class GeminiColorSettingsPage implements ColorSettingsPage {
 
     private static final AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[]{
-            new AttributesDescriptor("Key", GeminiSyntaxHighlighter.KEY),
-            new AttributesDescriptor("Separator", GeminiSyntaxHighlighter.SEPARATOR),
-            new AttributesDescriptor("Value", GeminiSyntaxHighlighter.VALUE),
+            new AttributesDescriptor("Header 1//Header 1 marker", GeminiSyntaxHighlighter.H1_HEADER),
+            new AttributesDescriptor("Header 1//Header 1", GeminiSyntaxHighlighter.H1_TEXT),
+            new AttributesDescriptor("Header 2//Header 2 marker", GeminiSyntaxHighlighter.H2_HEADER),
+            new AttributesDescriptor("Header 2//Header 2", GeminiSyntaxHighlighter.H2_TEXT),
+            new AttributesDescriptor("Header 3//Header 3 marker", GeminiSyntaxHighlighter.H3_HEADER),
+            new AttributesDescriptor("Header 3//Header 3", GeminiSyntaxHighlighter.H3_TEXT),
+            new AttributesDescriptor("Blockquote//Blockquote marker", GeminiSyntaxHighlighter.QUOTE_HEADER),
+            new AttributesDescriptor("Blockquote//Blockquote", GeminiSyntaxHighlighter.QUOTE_TEXT),
+            new AttributesDescriptor("Unordered list//Unordered list marker", GeminiSyntaxHighlighter.ULIST_HEADER),
+            new AttributesDescriptor("Unordered list//Unordered list", GeminiSyntaxHighlighter.ULIST_TEXT),
+            new AttributesDescriptor("Link//Link marker", GeminiSyntaxHighlighter.LINK_HEADER),
+            new AttributesDescriptor("Link//Link URL", GeminiSyntaxHighlighter.LINK_URL),
+            new AttributesDescriptor("Link//Link text", GeminiSyntaxHighlighter.LINK_TEXT),
+            new AttributesDescriptor("Preformatted//Preformatted marker", GeminiSyntaxHighlighter.PRE_HEADER),
+            new AttributesDescriptor("Preformatted//Preformatted alt-text", GeminiSyntaxHighlighter.PRE_ALT),
+            new AttributesDescriptor("Preformatted//Preformatted", GeminiSyntaxHighlighter.PRE_TEXT),
+            new AttributesDescriptor("Plain text", GeminiSyntaxHighlighter.PLAIN_TEXT),
             new AttributesDescriptor("Bad value", GeminiSyntaxHighlighter.BAD_CHARACTER)
     };
 
@@ -35,18 +49,33 @@ public class GeminiColorSettingsPage implements ColorSettingsPage {
     @NotNull
     @Override
     public String getDemoText() {
-        return "# You are reading the \".properties\" entry.\n" +
-                "! The exclamation mark can also mark text as comments.\n" +
-                "website = https://en.wikipedia.org/\n" +
-                "language = English\n" +
-                "# The backslash below tells the application to continue reading\n" +
-                "# the value onto the next line.\n" +
-                "message = Welcome to \\\n" +
-                "          Wikipedia!\n" +
-                "# Add spaces to the key\n" +
-                "key\\ with\\ spaces = This is the value that could be looked up with the key \"key with spaces\".\n" +
-                "# Unicode\n" +
-                "tab : \\u0009";
+        return "# text/gemini test file\n" +
+                "\n" +
+                "This is test file that demonstrates the various text/gemini line types.\n" +
+                "\n" +
+                "## Formatting\n" +
+                "\n" +
+                "> quote line\n" +
+                "> quote line\n" +
+                "\n" +
+                "* bullet list item\n" +
+                "* bullet list item\n" +
+                "\n" +
+                "```alt text\n" +
+                "preformatted text block\n" +
+                "```\n" +
+                "\n" +
+                "## Links\n" +
+                "\n" +
+                "### Internal\n" +
+                "\n" +
+                "=> ./ This is a relative URL\n" +
+                "=> /test.gmi This is an absolute URL\n" +
+                "\n" +
+                "### External\n" +
+                "\n" +
+                "=> gemini://gemini.circumlunar.space/\n" +
+                "=> gemini://gemini.circumlunar.space/ This is an external URL\n";
     }
 
     @Nullable

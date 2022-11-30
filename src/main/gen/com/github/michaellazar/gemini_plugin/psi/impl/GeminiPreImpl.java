@@ -11,14 +11,14 @@ import static com.github.michaellazar.gemini_plugin.psi.GeminiTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.michaellazar.gemini_plugin.psi.*;
 
-public class GeminiPropertyImpl extends ASTWrapperPsiElement implements GeminiProperty {
+public class GeminiPreImpl extends ASTWrapperPsiElement implements GeminiPre {
 
-  public GeminiPropertyImpl(@NotNull ASTNode node) {
+  public GeminiPreImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull GeminiVisitor visitor) {
-    visitor.visitProperty(this);
+    visitor.visitPre(this);
   }
 
   @Override
