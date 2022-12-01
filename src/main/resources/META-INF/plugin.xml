@@ -4,6 +4,7 @@
     <name>Gemini</name>
     <vendor>michael-lazar</vendor>
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <fileType
@@ -24,5 +25,8 @@
         <colorSettingsPage
             implementation="com.github.michaellazar.gemini_plugin.GeminiColorSettingsPage"
         />
+        <lang.foldingBuilder
+            language="Gemini"
+            implementationClass="com.github.michaellazar.gemini_plugin.GeminiFoldingBuilder"/>
     </extensions>
 </idea-plugin>
