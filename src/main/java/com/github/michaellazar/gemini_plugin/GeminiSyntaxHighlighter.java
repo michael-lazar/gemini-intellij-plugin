@@ -62,8 +62,6 @@ public class GeminiSyntaxHighlighter extends SyntaxHighlighterBase {
 
     @Override
     public TextAttributesKey @NotNull [] getTokenHighlights(IElementType tokenType) {
-        System.out.println(tokenType);
-
         if (tokenType.equals(GeminiTypes.H1_HEADER)) {
             return H1_HEADER_KEYS;
         }

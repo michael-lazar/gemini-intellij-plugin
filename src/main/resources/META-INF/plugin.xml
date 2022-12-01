@@ -28,5 +28,8 @@
         <lang.foldingBuilder
             language="Gemini"
             implementationClass="com.github.michaellazar.gemini_plugin.GeminiFoldingBuilder"/>
+        <spellchecker.support
+            language="Gemini"
+            implementationClass="com.github.michaellazar.gemini_plugin.GeminiSpellcheckingStrategy"/>
     </extensions>
 </idea-plugin>
