@@ -22,7 +22,7 @@ public class GeminiSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey H3_HEADER = createTextAttributesKey("GEMINI_H3_HEADER", KEYWORD);
     public static final TextAttributesKey H3_TEXT = createTextAttributesKey("GEMINI_H3_TEXT", CONSTANT);
     public static final TextAttributesKey QUOTE_HEADER = createTextAttributesKey("GEMINI_QUOTE_HEADER", KEYWORD);
-    public static final TextAttributesKey QUOTE_TEXT = createTextAttributesKey("GEMINI_QUOTE_TEXT", STRING);
+    public static final TextAttributesKey QUOTE_TEXT = createTextAttributesKey("GEMINI_QUOTE_TEXT", HighlighterColors.TEXT);
     public static final TextAttributesKey ULIST_HEADER = createTextAttributesKey("GEMINI_ULIST_HEADER", KEYWORD);
     public static final TextAttributesKey ULIST_TEXT = createTextAttributesKey("GEMINI_ULIST_TEXT", HighlighterColors.TEXT);
     public static final TextAttributesKey LINK_HEADER = createTextAttributesKey("GEMINI_LINK_HEADER", KEYWORD);
