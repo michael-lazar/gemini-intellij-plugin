@@ -7,6 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public class GeminiVisitor extends PsiElementVisitor {
 
+  public void visitDescription(@NotNull GeminiDescription o) {
+    visitPsiElement(o);
+  }
+
   public void visitH1(@NotNull GeminiH1 o) {
     visitPsiElement(o);
   }

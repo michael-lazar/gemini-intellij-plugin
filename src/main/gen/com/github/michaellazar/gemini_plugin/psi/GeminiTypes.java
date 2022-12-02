@@ -8,6 +8,7 @@ import com.github.michaellazar.gemini_plugin.psi.impl.*;
 
 public interface GeminiTypes {
 
+  IElementType DESCRIPTION = new GeminiElementType("DESCRIPTION");
   IElementType H_1 = new GeminiElementType("H_1");
   IElementType H_2 = new GeminiElementType("H_2");
   IElementType H_3 = new GeminiElementType("H_3");
@@ -41,7 +42,10 @@ public interface GeminiTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-      if (type == H_1) {
+      if (type == DESCRIPTION) {
+        return new GeminiDescriptionImpl(node);
+      }
+      else if (type == H_1) {
         return new GeminiH1Impl(node);
       }
       else if (type == H_2) {

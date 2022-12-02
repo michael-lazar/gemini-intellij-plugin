@@ -27,4 +27,10 @@ public class GeminiUlistImpl extends ASTWrapperPsiElement implements GeminiUlist
     else super.accept(visitor);
   }
 
+  @Override
+  @Nullable
+  public GeminiDescription getDescription() {
+    return findChildByClass(GeminiDescription.class);
+  }
+
 }

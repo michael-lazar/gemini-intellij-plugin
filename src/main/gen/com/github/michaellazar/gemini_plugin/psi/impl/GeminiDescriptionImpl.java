@@ -11,26 +11,20 @@ import static com.github.michaellazar.gemini_plugin.psi.GeminiTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.michaellazar.gemini_plugin.psi.*;
 
-public class GeminiLinkImpl extends ASTWrapperPsiElement implements GeminiLink {
+public class GeminiDescriptionImpl extends ASTWrapperPsiElement implements GeminiDescription {
 
-  public GeminiLinkImpl(@NotNull ASTNode node) {
+  public GeminiDescriptionImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull GeminiVisitor visitor) {
-    visitor.visitLink(this);
+    visitor.visitDescription(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof GeminiVisitor) accept((GeminiVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @Nullable
-  public GeminiDescription getDescription() {
-    return findChildByClass(GeminiDescription.class);
   }
 
 }

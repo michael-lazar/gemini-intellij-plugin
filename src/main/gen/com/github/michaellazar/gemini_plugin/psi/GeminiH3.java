@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface GeminiH3 extends PsiElement {
 
+  @Nullable
+  GeminiDescription getDescription();
+
 }

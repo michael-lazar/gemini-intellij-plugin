@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface GeminiUlist extends PsiElement {
 
+  @Nullable
+  GeminiDescription getDescription();
+
 }

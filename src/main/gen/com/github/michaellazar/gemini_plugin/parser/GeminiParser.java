@@ -36,6 +36,22 @@ public class GeminiParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // H1_TEXT|H2_TEXT|H3_TEXT|QUOTE_TEXT|ULIST_TEXT|LINK_TEXT
+  public static boolean description(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "description")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, DESCRIPTION, "<description>");
+    r = consumeToken(b, H1_TEXT);
+    if (!r) r = consumeToken(b, H2_TEXT);
+    if (!r) r = consumeToken(b, H3_TEXT);
+    if (!r) r = consumeToken(b, QUOTE_TEXT);
+    if (!r) r = consumeToken(b, ULIST_TEXT);
+    if (!r) r = consumeToken(b, LINK_TEXT);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
   // line*
   static boolean geminiFile(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "geminiFile")) return false;
@@ -48,7 +64,7 @@ public class GeminiParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // H1_HEADER H1_TEXT?
+  // H1_HEADER description?
   public static boolean h1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "h1")) return false;
     if (!nextTokenIs(b, H1_HEADER)) return false;
@@ -60,15 +76,15 @@ public class GeminiParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // H1_TEXT?
+  // description?
   private static boolean h1_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "h1_1")) return false;
-    consumeToken(b, H1_TEXT);
+    description(b, l + 1);
     return true;
   }
 
   /* ********************************************************** */
-  // H2_HEADER H2_TEXT?
+  // H2_HEADER description?
   public static boolean h2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "h2")) return false;
     if (!nextTokenIs(b, H2_HEADER)) return false;
@@ -80,15 +96,15 @@ public class GeminiParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // H2_TEXT?
+  // description?
   private static boolean h2_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "h2_1")) return false;
-    consumeToken(b, H2_TEXT);
+    description(b, l + 1);
     return true;
   }
 
   /* ********************************************************** */
-  // H3_HEADER H3_TEXT?
+  // H3_HEADER description?
   public static boolean h3(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "h3")) return false;
     if (!nextTokenIs(b, H3_HEADER)) return false;
@@ -100,10 +116,10 @@ public class GeminiParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // H3_TEXT?
+  // description?
   private static boolean h3_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "h3_1")) return false;
-    consumeToken(b, H3_TEXT);
+    description(b, l + 1);
     return true;
   }
 
@@ -126,7 +142,7 @@ public class GeminiParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // LINK_HEADER LINK_URL LINK_TEXT?
+  // LINK_HEADER LINK_URL description?
   public static boolean link(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "link")) return false;
     if (!nextTokenIs(b, LINK_HEADER)) return false;
@@ -138,10 +154,10 @@ public class GeminiParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // LINK_TEXT?
+  // description?
   private static boolean link_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "link_2")) return false;
-    consumeToken(b, LINK_TEXT);
+    description(b, l + 1);
     return true;
   }
 
@@ -206,7 +222,7 @@ public class GeminiParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // QUOTE_HEADER QUOTE_TEXT?
+  // QUOTE_HEADER description?
   public static boolean quote(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "quote")) return false;
     if (!nextTokenIs(b, QUOTE_HEADER)) return false;
@@ -218,15 +234,15 @@ public class GeminiParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // QUOTE_TEXT?
+  // description?
   private static boolean quote_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "quote_1")) return false;
-    consumeToken(b, QUOTE_TEXT);
+    description(b, l + 1);
     return true;
   }
 
   /* ********************************************************** */
-  // ULIST_HEADER ULIST_TEXT?
+  // ULIST_HEADER description?
   public static boolean ulist(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ulist")) return false;
     if (!nextTokenIs(b, ULIST_HEADER)) return false;
@@ -238,10 +254,10 @@ public class GeminiParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // ULIST_TEXT?
+  // description?
   private static boolean ulist_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ulist_1")) return false;
-    consumeToken(b, ULIST_TEXT);
+    description(b, l + 1);
     return true;
   }
 

@@ -17,22 +17,7 @@ public class GeminiSpellcheckingStrategy extends SpellcheckingStrategy {
             // Skip pre blocks because they often contain ascii art, code, etc
             return EMPTY_TOKENIZER;
         }
-        if (element instanceof GeminiH1) {
-            return TEXT_TOKENIZER;
-        }
-        if (element instanceof GeminiH2) {
-            return TEXT_TOKENIZER;
-        }
-        if (element instanceof GeminiH3) {
-            return TEXT_TOKENIZER;
-        }
-        if (element instanceof GeminiLink) {
-            return TEXT_TOKENIZER;
-        }
-        if (element instanceof GeminiQuote) {
-            return TEXT_TOKENIZER;
-        }
-        if (element instanceof GeminiUlist) {
+        if (element instanceof GeminiDescription) {
             return TEXT_TOKENIZER;
         }
         return EMPTY_TOKENIZER;
