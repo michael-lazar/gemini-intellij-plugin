@@ -30,12 +30,11 @@ class GeminiLexer implements FlexLexer {
   public static final int WAITING_ULIST_TEXT = 10;
   public static final int WAITING_PLAIN_TEXT = 12;
   public static final int WAITING_LINK_URL = 14;
-  public static final int WAITING_LINK_SP = 16;
-  public static final int WAITING_LINK_TEXT = 18;
-  public static final int WAITING_PRE_ALT = 20;
-  public static final int WAITING_PRE_TEXT = 22;
-  public static final int WAITING_PRE_CRLF = 24;
-  public static final int WAITING_CRLF = 26;
+  public static final int WAITING_LINK_TEXT = 16;
+  public static final int WAITING_PRE_ALT = 18;
+  public static final int WAITING_PRE_TEXT = 20;
+  public static final int WAITING_PRE_CRLF = 22;
+  public static final int WAITING_CRLF = 24;
 
   /**
    * ZZ_LEXSTATE[l] is the state in the DFA for the lexical state l
@@ -45,7 +44,7 @@ class GeminiLexer implements FlexLexer {
    */
   private static final int ZZ_LEXSTATE[] = { 
      0,  0,  1,  1,  2,  2,  3,  3,  4,  4,  5,  5,  6,  6,  7,  7, 
-     8,  8,  9,  9, 10, 10, 11, 11, 12, 12, 13, 13
+     8,  8,  9,  9, 10, 10, 11, 11, 12, 12
   };
 
   /** 
@@ -76,14 +75,13 @@ class GeminiLexer implements FlexLexer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\16\0\1\1\1\2\1\3\1\4\1\5\3\1\1\6"+
+    "\15\0\1\1\1\2\1\3\1\4\1\5\3\1\1\6"+
     "\1\7\1\10\1\11\1\12\1\13\1\3\1\14\1\15"+
-    "\1\16\1\17\1\20\1\3\2\21\1\4\1\22\1\5"+
-    "\1\23\1\0\1\24\1\21\1\22\1\25\1\26\1\24"+
-    "\1\27\1\25";
+    "\1\16\1\17\1\3\2\20\1\21\1\22\1\0\1\23"+
+    "\1\20\1\24\1\25\1\23\1\26";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[50];
+    int [] result = new int[44];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -109,15 +107,14 @@ class GeminiLexer implements FlexLexer {
 
   private static final String ZZ_ROWMAP_PACKED_0 =
     "\0\0\0\12\0\24\0\36\0\50\0\62\0\74\0\106"+
-    "\0\120\0\132\0\144\0\156\0\170\0\202\0\214\0\214"+
-    "\0\226\0\240\0\252\0\264\0\276\0\310\0\322\0\334"+
-    "\0\346\0\360\0\372\0\u0104\0\214\0\u010e\0\214\0\u0118"+
-    "\0\u0122\0\214\0\u012c\0\u0136\0\u0140\0\214\0\u014a\0\214"+
-    "\0\214\0\u0154\0\u015e\0\u0168\0\214\0\u0172\0\214\0\214"+
-    "\0\u017c\0\214";
+    "\0\120\0\132\0\144\0\156\0\170\0\202\0\202\0\214"+
+    "\0\226\0\202\0\240\0\252\0\264\0\276\0\310\0\322"+
+    "\0\334\0\346\0\360\0\202\0\372\0\u0104\0\u010e\0\202"+
+    "\0\u0118\0\u0122\0\u012c\0\u0136\0\202\0\u0140\0\u014a\0\u0154"+
+    "\0\202\0\202\0\202\0\u015e";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[50];
+    int [] result = new int[44];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -140,26 +137,24 @@ class GeminiLexer implements FlexLexer {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\2\17\1\20\1\21\1\17\1\22\1\23\1\24\1\25"+
-    "\1\26\2\27\1\20\1\21\6\27\2\30\1\20\1\21"+
-    "\6\30\2\31\1\20\1\21\6\31\2\32\1\20\1\21"+
-    "\6\32\2\33\1\20\1\21\6\33\2\34\1\20\1\21"+
-    "\6\34\4\35\6\36\1\35\1\37\1\20\1\21\6\35"+
-    "\2\40\1\20\1\21\6\40\2\41\1\42\1\43\6\41"+
-    "\2\44\1\42\1\43\4\44\1\45\1\44\2\35\1\42"+
-    "\1\43\10\35\1\20\1\21\6\35\14\0\1\20\10\0"+
-    "\1\46\3\0\1\47\5\0\1\50\11\0\1\51\20\0"+
-    "\1\52\7\0\1\53\3\0\2\27\2\0\6\27\2\30"+
-    "\2\0\6\30\2\31\2\0\6\31\2\32\2\0\6\32"+
-    "\2\33\2\0\6\33\2\34\2\0\6\34\4\0\6\36"+
-    "\2\40\2\0\6\40\2\41\2\0\6\41\2\0\1\42"+
-    "\7\0\2\44\2\0\10\44\2\0\4\44\1\54\1\44"+
-    "\1\0\1\55\3\0\1\56\14\0\1\57\2\0\1\60"+
-    "\10\0\2\44\2\0\4\44\1\61\1\44\1\0\1\62"+
-    "\10\0\2\61\2\0\6\61";
+    "\2\16\1\17\1\20\1\16\1\21\1\22\1\23\1\24"+
+    "\1\25\2\26\1\17\1\20\6\26\2\27\1\17\1\20"+
+    "\6\27\2\30\1\17\1\20\6\30\2\31\1\17\1\20"+
+    "\6\31\2\32\1\17\1\20\6\32\2\33\1\17\1\20"+
+    "\6\33\4\34\6\35\2\36\1\17\1\20\6\36\2\37"+
+    "\1\40\1\41\6\37\2\42\1\40\1\41\4\42\1\43"+
+    "\1\42\2\34\1\40\1\41\10\34\1\17\1\20\6\34"+
+    "\14\0\1\17\14\0\1\44\5\0\1\45\20\0\1\46"+
+    "\7\0\1\47\3\0\2\26\2\0\6\26\2\27\2\0"+
+    "\6\27\2\30\2\0\6\30\2\31\2\0\6\31\2\32"+
+    "\2\0\6\32\2\33\2\0\6\33\4\0\6\35\2\36"+
+    "\2\0\6\36\2\37\2\0\6\37\2\0\1\40\7\0"+
+    "\2\42\2\0\10\42\2\0\4\42\1\50\1\42\5\0"+
+    "\1\51\14\0\1\52\2\0\1\53\10\0\2\42\2\0"+
+    "\4\42\1\54\1\42\2\54\2\0\6\54";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[390];
+    int [] result = new int[360];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -197,12 +192,11 @@ class GeminiLexer implements FlexLexer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\16\0\2\11\14\1\1\11\1\1\1\11\2\1\1\11"+
-    "\3\1\1\11\1\1\2\11\1\0\2\1\1\11\1\1"+
-    "\2\11\1\1\1\11";
+    "\15\0\2\11\2\1\1\11\11\1\1\11\3\1\1\11"+
+    "\4\1\1\11\1\0\2\1\3\11\1\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[50];
+    int [] result = new int[44];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -519,117 +513,112 @@ class GeminiLexer implements FlexLexer {
             { yybegin(WAITING_PLAIN_TEXT); return GeminiTypes.PLAIN_HEADER;
             } 
             // fall through
-          case 24: break;
+          case 23: break;
           case 2: 
             { yybegin(YYINITIAL); return TokenType.WHITE_SPACE;
             } 
             // fall through
-          case 25: break;
+          case 24: break;
           case 3: 
             { return TokenType.BAD_CHARACTER;
             } 
             // fall through
-          case 26: break;
+          case 25: break;
           case 4: 
             { yybegin(WAITING_H1_TEXT); return GeminiTypes.H1_HEADER;
             } 
             // fall through
-          case 27: break;
+          case 26: break;
           case 5: 
             { yybegin(WAITING_QUOTE_TEXT); return GeminiTypes.QUOTE_HEADER;
             } 
             // fall through
-          case 28: break;
+          case 27: break;
           case 6: 
             { yybegin(WAITING_CRLF); return GeminiTypes.H1_TEXT;
             } 
             // fall through
-          case 29: break;
+          case 28: break;
           case 7: 
             { yybegin(WAITING_CRLF); return GeminiTypes.H2_TEXT;
             } 
             // fall through
-          case 30: break;
+          case 29: break;
           case 8: 
             { yybegin(WAITING_CRLF); return GeminiTypes.H3_TEXT;
             } 
             // fall through
-          case 31: break;
+          case 30: break;
           case 9: 
             { yybegin(WAITING_CRLF); return GeminiTypes.QUOTE_TEXT;
             } 
             // fall through
-          case 32: break;
+          case 31: break;
           case 10: 
             { yybegin(WAITING_CRLF); return GeminiTypes.ULIST_TEXT;
             } 
             // fall through
-          case 33: break;
+          case 32: break;
           case 11: 
             { yybegin(WAITING_CRLF); return GeminiTypes.PLAIN_TEXT;
             } 
             // fall through
-          case 34: break;
+          case 33: break;
           case 12: 
-            { yybegin(WAITING_LINK_SP); return GeminiTypes.LINK_URL;
+            { yybegin(WAITING_LINK_TEXT); return GeminiTypes.LINK_URL;
             } 
             // fall through
-          case 35: break;
+          case 34: break;
           case 13: 
-            { yybegin(WAITING_LINK_TEXT); return TokenType.WHITE_SPACE;
-            } 
-            // fall through
-          case 36: break;
-          case 14: 
             { yybegin(WAITING_CRLF); return GeminiTypes.LINK_TEXT;
             } 
             // fall through
-          case 37: break;
-          case 15: 
+          case 35: break;
+          case 14: 
             { yybegin(WAITING_PRE_CRLF); return GeminiTypes.PRE_ALT;
             } 
             // fall through
-          case 38: break;
-          case 16: 
+          case 36: break;
+          case 15: 
             { yybegin(WAITING_PRE_TEXT); return TokenType.WHITE_SPACE;
             } 
             // fall through
-          case 39: break;
-          case 17: 
+          case 37: break;
+          case 16: 
             { yybegin(WAITING_PRE_CRLF); return GeminiTypes.PRE_TEXT;
             } 
             // fall through
-          case 40: break;
-          case 18: 
+          case 38: break;
+          case 17: 
             { yybegin(WAITING_H2_TEXT); return GeminiTypes.H2_HEADER;
             } 
             // fall through
-          case 41: break;
-          case 19: 
+          case 39: break;
+          case 18: 
             { yybegin(WAITING_ULIST_TEXT); return GeminiTypes.ULIST_HEADER;
             } 
             // fall through
-          case 42: break;
-          case 20: 
+          case 40: break;
+          case 19: 
             { yybegin(WAITING_LINK_URL); return GeminiTypes.LINK_HEADER;
             } 
             // fall through
-          case 43: break;
-          case 21: 
+          case 41: break;
+          case 20: 
             { yybegin(WAITING_H3_TEXT); return GeminiTypes.H3_HEADER;
             } 
             // fall through
-          case 44: break;
-          case 22: 
+          case 42: break;
+          case 21: 
             { yybegin(WAITING_PRE_ALT); return GeminiTypes.PRE_HEADER;
             } 
             // fall through
-          case 45: break;
-          case 23: 
+          case 43: break;
+          case 22: 
             { yybegin(WAITING_CRLF); return GeminiTypes.PRE_FOOTER;
             } 
             // fall through
-          case 46: break;
+          case 44: break;
           default:
             zzScanError(ZZ_NO_MATCH);
           }

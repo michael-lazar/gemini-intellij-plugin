@@ -166,7 +166,7 @@ public class GeminiParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // PRE_HEADER PRE_ALT? PRE_TEXT* PRE_FOOTER
+  // PRE_HEADER PRE_ALT? PRE_TEXT* PRE_FOOTER?
   public static boolean pre(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "pre")) return false;
     if (!nextTokenIs(b, PRE_HEADER)) return false;
@@ -175,7 +175,7 @@ public class GeminiParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, PRE_HEADER);
     r = r && pre_1(b, l + 1);
     r = r && pre_2(b, l + 1);
-    r = r && consumeToken(b, PRE_FOOTER);
+    r = r && pre_3(b, l + 1);
     exit_section_(b, m, PRE, r);
     return r;
   }
@@ -195,6 +195,13 @@ public class GeminiParser implements PsiParser, LightPsiParser {
       if (!consumeToken(b, PRE_TEXT)) break;
       if (!empty_element_parsed_guard_(b, "pre_2", c)) break;
     }
+    return true;
+  }
+
+  // PRE_FOOTER?
+  private static boolean pre_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "pre_3")) return false;
+    consumeToken(b, PRE_FOOTER);
     return true;
   }
 
