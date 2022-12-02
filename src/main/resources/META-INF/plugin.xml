@@ -2,9 +2,8 @@
 <idea-plugin>
     <id>com.github.michaellazar.gemini_plugin</id>
     <name>Gemini</name>
-    <vendor>michael-lazar</vendor>
+    <vendor email="michael@mozz.us" url="https://github.com/michael-lazar/">Michael Lazar</vendor>
     <depends>com.intellij.modules.platform</depends>
-    <depends>com.intellij.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <fileType
