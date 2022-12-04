@@ -5,14 +5,14 @@
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/com.github.michaellazar.gemini_plugin.svg)](https://plugins.jetbrains.com/plugin/com.github.michaellazar.gemini_plugin)
 
 <!-- Plugin description -->
-Adds support for the [*text/gemini*](https://gemini.circumlunar.space/docs/) markup language.
+Adds IDE support for the [*text/gemini*](https://gemini.circumlunar.space/docs/) markup language.
 
 Features:
 
 - Syntax highlighting
 - Custom icons for .gmi files
 - Context-aware spellchecking
-- Code folding for preformatted text
+- Code folding for preformatted blocks
 <!-- Plugin description end -->
 
 ## Installation

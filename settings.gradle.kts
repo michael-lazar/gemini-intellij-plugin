@@ -1,1 +1,1 @@
-rootProject.name = "gemini-intellij-plugin"
+rootProject.name = "Gemini"

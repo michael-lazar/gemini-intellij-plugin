@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# gemini-intellij-plugin Changelog
+# Gemini Changelog
 
 ## [Unreleased]
 
@@ -8,4 +8,4 @@
 
 ### Added
 
-- Initial release
+- First release 🎉
