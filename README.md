@@ -21,13 +21,11 @@ Features:
 - Code folding for preformatted blocks
 <!-- Plugin description end -->
 
-<details>
-    <summary><b>Screenshots</b></summary>
-    <p align="center">
-        <img src="resources/gemini-editor.png">
-        <img src="resources/gemini-color-preferences.png">
-    </p>
-</details>
+### Screenshots
+<p align="center">
+    <img src="resources/gemini-editor.png">
+    <img src="resources/gemini-color-preferences.png">
+</p>
 
 ## Installation
 
