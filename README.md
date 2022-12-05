@@ -4,20 +4,30 @@
 [![Version](https://img.shields.io/jetbrains/plugin/v/com.github.michaellazar.gemini_plugin.svg)](https://plugins.jetbrains.com/plugin/com.github.michaellazar.gemini_plugin)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/com.github.michaellazar.gemini_plugin.svg)](https://plugins.jetbrains.com/plugin/com.github.michaellazar.gemini_plugin)
 
+This is a very basic [gemini](https://gemini.circumlunar.space/docs/) language plugin for the JetBrains family of editors (IntelliJ IDEA, PyCharm, Android Studio, etc.)
+
+I practically live in PyCharm, and I wanted a better experience for working with gemini text files (`.gmi`).
+
+## Features
+
 <!-- Plugin description -->
 Adds IDE support for the [*text/gemini*](https://gemini.circumlunar.space/docs/) markup language.
 
 Features:
 
 - Syntax highlighting
-- Custom icons for .gmi files
-- Context-aware spellchecking
+- Custom file icons for .gmi files
+- Context-aware spellchecking (will skip preformatted blocks)
 - Code folding for preformatted blocks
 <!-- Plugin description end -->
 
-<p align="center"><img src="resources/gemini-editor.png"></p>
-
-<p align="center"><img src="resources/gemini-color-preferences.png"></p>
+<details>
+    <summary><b>Screenshots</b></summary>
+    <p align="center">
+        <img src="resources/gemini-editor.png">
+        <img src="resources/gemini-color-preferences.png">
+    </p>
+</details>
 
 ## Installation
 
