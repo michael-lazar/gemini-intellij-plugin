@@ -15,6 +15,10 @@ Features:
 - Code folding for preformatted blocks
 <!-- Plugin description end -->
 
+<p align="center"><img src="resources/gemini-editor.png"></p>
+
+<p align="center"><img src="resources/gemini-color-preferences.png"></p>
+
 ## Installation
 
 - Using IDE built-in plugin system:

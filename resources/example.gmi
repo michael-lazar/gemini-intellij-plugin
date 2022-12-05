@@ -1,0 +1,36 @@
+# text/gemini test file
+
+This is test file that demonstrates the various text/gemini line types.
+
+## Formatting
+
+> quote line
+> quote line
+
+* bullet list item
+* bullet list item
+
+### Preformatted text
+
+```A nice drawing of a cat
+   |\---/|
+   | ,_, |
+    \_`_/-..----.
+ ___/ `   ' ,""+ \  sk
+(__...'   __\    |`.___.';
+  (_,...'(_,.`__)/'.....+
+```
+
+Here's a preformatted block that has been folded:
+
+```
+     Over the wintry
+Forest, winds howl in rage
+  With no leaves to blow.
+```
+
+## Links
+
+=> ./ This is a relative URL
+=> /test.gmi This is an absolute URL
+=> gemini://gemini.circumlunar.space/ This is an external URL
