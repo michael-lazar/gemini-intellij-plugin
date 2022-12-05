@@ -27,8 +27,8 @@ H3_HEADER="###"
 QUOTE_HEADER=">"
 ULIST_HEADER="* "
 PRE_HEADER="```"
-PRE_FOOTER="```" [^\r\n]*
-LINK_HEADER="=>" [ ]?
+PRE_FOOTER="```" {TEXT}*
+LINK_HEADER="=>" {WHITESPACE}*
 
 %state WAITING_H1_TEXT
 %state WAITING_H2_TEXT
@@ -37,6 +37,7 @@ LINK_HEADER="=>" [ ]?
 %state WAITING_ULIST_TEXT
 %state WAITING_PLAIN_TEXT
 %state WAITING_LINK_URL
+%state WAITING_LINK_SP
 %state WAITING_LINK_TEXT
 %state WAITING_PRE_ALT
 %state WAITING_PRE_TEXT
@@ -72,7 +73,9 @@ LINK_HEADER="=>" [ ]?
 <WAITING_PLAIN_TEXT> {CRLF}         { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
 
 <YYINITIAL> {LINK_HEADER}           { yybegin(WAITING_LINK_URL); return GeminiTypes.LINK_HEADER; }
-<WAITING_LINK_URL> {URL}            { yybegin(WAITING_LINK_TEXT); return GeminiTypes.LINK_URL; }
+<WAITING_LINK_URL> {URL}            { yybegin(WAITING_LINK_SP); return GeminiTypes.LINK_URL; }
+<WAITING_LINK_SP> {WHITESPACE}      { yybegin(WAITING_LINK_TEXT); return TokenType.WHITE_SPACE; }
+<WAITING_LINK_SP> {CRLF}            { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
 <WAITING_LINK_TEXT> {TEXT}+         { yybegin(WAITING_CRLF); return GeminiTypes.LINK_TEXT; }
 <WAITING_LINK_TEXT> {CRLF}          { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
 

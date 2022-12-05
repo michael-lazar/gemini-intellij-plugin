@@ -30,11 +30,12 @@ class GeminiLexer implements FlexLexer {
   public static final int WAITING_ULIST_TEXT = 10;
   public static final int WAITING_PLAIN_TEXT = 12;
   public static final int WAITING_LINK_URL = 14;
-  public static final int WAITING_LINK_TEXT = 16;
-  public static final int WAITING_PRE_ALT = 18;
-  public static final int WAITING_PRE_TEXT = 20;
-  public static final int WAITING_PRE_CRLF = 22;
-  public static final int WAITING_CRLF = 24;
+  public static final int WAITING_LINK_SP = 16;
+  public static final int WAITING_LINK_TEXT = 18;
+  public static final int WAITING_PRE_ALT = 20;
+  public static final int WAITING_PRE_TEXT = 22;
+  public static final int WAITING_PRE_CRLF = 24;
+  public static final int WAITING_CRLF = 26;
 
   /**
    * ZZ_LEXSTATE[l] is the state in the DFA for the lexical state l
@@ -44,7 +45,7 @@ class GeminiLexer implements FlexLexer {
    */
   private static final int ZZ_LEXSTATE[] = { 
      0,  0,  1,  1,  2,  2,  3,  3,  4,  4,  5,  5,  6,  6,  7,  7, 
-     8,  8,  9,  9, 10, 10, 11, 11, 12, 12
+     8,  8,  9,  9, 10, 10, 11, 11, 12, 12, 13, 13
   };
 
   /** 
@@ -66,7 +67,7 @@ class GeminiLexer implements FlexLexer {
 
   /* The ZZ_CMAP_A table has 640 entries */
   static final char ZZ_CMAP_A[] = zzUnpackCMap(
-    "\11\4\1\0\1\2\2\0\1\3\22\4\1\1\2\4\1\5\6\4\1\7\22\4\1\11\1\6\41\4\1\10\44"+
+    "\11\4\1\5\1\2\2\0\1\3\22\4\1\1\2\4\1\6\6\4\1\10\22\4\1\12\1\7\41\4\1\11\44"+
     "\4\1\0\32\4\1\0\337\4\1\0\177\4\13\0\35\4\2\0\5\4\1\0\57\4\1\0\40\4");
 
   /** 
@@ -75,13 +76,13 @@ class GeminiLexer implements FlexLexer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\15\0\1\1\1\2\1\3\1\4\1\5\3\1\1\6"+
+    "\16\0\1\1\1\2\1\3\1\4\1\5\3\1\1\6"+
     "\1\7\1\10\1\11\1\12\1\13\1\3\1\14\1\15"+
-    "\1\16\1\17\1\3\2\20\1\21\1\22\1\0\1\23"+
-    "\1\20\1\24\1\25\1\23\1\26";
+    "\1\16\1\17\1\20\1\3\2\21\1\22\1\23\1\0"+
+    "\1\24\1\21\1\25\1\26\1\27";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[44];
+    int [] result = new int[45];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -106,15 +107,15 @@ class GeminiLexer implements FlexLexer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\12\0\24\0\36\0\50\0\62\0\74\0\106"+
-    "\0\120\0\132\0\144\0\156\0\170\0\202\0\202\0\214"+
-    "\0\226\0\202\0\240\0\252\0\264\0\276\0\310\0\322"+
-    "\0\334\0\346\0\360\0\202\0\372\0\u0104\0\u010e\0\202"+
-    "\0\u0118\0\u0122\0\u012c\0\u0136\0\202\0\u0140\0\u014a\0\u0154"+
-    "\0\202\0\202\0\202\0\u015e";
+    "\0\0\0\13\0\26\0\41\0\54\0\67\0\102\0\115"+
+    "\0\130\0\143\0\156\0\171\0\204\0\217\0\232\0\232"+
+    "\0\245\0\260\0\232\0\273\0\306\0\321\0\334\0\347"+
+    "\0\362\0\375\0\u0108\0\u0113\0\232\0\u011e\0\u0129\0\u0134"+
+    "\0\u013f\0\232\0\u014a\0\u0155\0\u0160\0\u016b\0\232\0\u0176"+
+    "\0\u0181\0\u018c\0\232\0\232\0\u0197";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[44];
+    int [] result = new int[45];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -137,24 +138,26 @@ class GeminiLexer implements FlexLexer {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\2\16\1\17\1\20\1\16\1\21\1\22\1\23\1\24"+
-    "\1\25\2\26\1\17\1\20\6\26\2\27\1\17\1\20"+
-    "\6\27\2\30\1\17\1\20\6\30\2\31\1\17\1\20"+
-    "\6\31\2\32\1\17\1\20\6\32\2\33\1\17\1\20"+
-    "\6\33\4\34\6\35\2\36\1\17\1\20\6\36\2\37"+
-    "\1\40\1\41\6\37\2\42\1\40\1\41\4\42\1\43"+
-    "\1\42\2\34\1\40\1\41\10\34\1\17\1\20\6\34"+
-    "\14\0\1\17\14\0\1\44\5\0\1\45\20\0\1\46"+
-    "\7\0\1\47\3\0\2\26\2\0\6\26\2\27\2\0"+
-    "\6\27\2\30\2\0\6\30\2\31\2\0\6\31\2\32"+
-    "\2\0\6\32\2\33\2\0\6\33\4\0\6\35\2\36"+
-    "\2\0\6\36\2\37\2\0\6\37\2\0\1\40\7\0"+
-    "\2\42\2\0\10\42\2\0\4\42\1\50\1\42\5\0"+
-    "\1\51\14\0\1\52\2\0\1\53\10\0\2\42\2\0"+
-    "\4\42\1\54\1\42\2\54\2\0\6\54";
+    "\2\17\1\20\1\21\2\17\1\22\1\23\1\24\1\25"+
+    "\1\26\2\27\1\20\1\21\7\27\2\30\1\20\1\21"+
+    "\7\30\2\31\1\20\1\21\7\31\2\32\1\20\1\21"+
+    "\7\32\2\33\1\20\1\21\7\33\2\34\1\20\1\21"+
+    "\7\34\4\35\1\36\1\35\5\36\1\35\1\37\1\20"+
+    "\1\21\1\35\1\37\5\35\2\40\1\20\1\21\7\40"+
+    "\2\41\1\42\1\43\7\41\2\44\1\42\1\43\5\44"+
+    "\1\45\1\44\2\35\1\42\1\43\11\35\1\20\1\21"+
+    "\7\35\15\0\1\20\16\0\1\46\5\0\1\47\22\0"+
+    "\1\50\10\0\1\51\3\0\2\27\2\0\7\27\2\30"+
+    "\2\0\7\30\2\31\2\0\7\31\2\32\2\0\7\32"+
+    "\2\33\2\0\7\33\2\34\2\0\7\34\4\0\1\36"+
+    "\1\0\5\36\1\0\1\37\3\0\1\37\5\0\2\40"+
+    "\2\0\7\40\2\41\2\0\7\41\2\0\1\42\10\0"+
+    "\2\44\2\0\11\44\2\0\5\44\1\52\1\44\6\0"+
+    "\1\53\15\0\1\54\2\0\1\51\3\0\1\51\5\0"+
+    "\2\44\2\0\5\44\1\55\1\44\2\55\2\0\7\55";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[360];
+    int [] result = new int[418];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -192,11 +195,11 @@ class GeminiLexer implements FlexLexer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\15\0\2\11\2\1\1\11\11\1\1\11\3\1\1\11"+
-    "\4\1\1\11\1\0\2\1\3\11\1\1";
+    "\16\0\2\11\2\1\1\11\11\1\1\11\4\1\1\11"+
+    "\4\1\1\11\1\0\2\1\2\11\1\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[44];
+    int [] result = new int[45];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -513,112 +516,117 @@ class GeminiLexer implements FlexLexer {
             { yybegin(WAITING_PLAIN_TEXT); return GeminiTypes.PLAIN_HEADER;
             } 
             // fall through
-          case 23: break;
+          case 24: break;
           case 2: 
             { yybegin(YYINITIAL); return TokenType.WHITE_SPACE;
             } 
             // fall through
-          case 24: break;
+          case 25: break;
           case 3: 
             { return TokenType.BAD_CHARACTER;
             } 
             // fall through
-          case 25: break;
+          case 26: break;
           case 4: 
             { yybegin(WAITING_H1_TEXT); return GeminiTypes.H1_HEADER;
             } 
             // fall through
-          case 26: break;
+          case 27: break;
           case 5: 
             { yybegin(WAITING_QUOTE_TEXT); return GeminiTypes.QUOTE_HEADER;
             } 
             // fall through
-          case 27: break;
+          case 28: break;
           case 6: 
             { yybegin(WAITING_CRLF); return GeminiTypes.H1_TEXT;
             } 
             // fall through
-          case 28: break;
+          case 29: break;
           case 7: 
             { yybegin(WAITING_CRLF); return GeminiTypes.H2_TEXT;
             } 
             // fall through
-          case 29: break;
+          case 30: break;
           case 8: 
             { yybegin(WAITING_CRLF); return GeminiTypes.H3_TEXT;
             } 
             // fall through
-          case 30: break;
+          case 31: break;
           case 9: 
             { yybegin(WAITING_CRLF); return GeminiTypes.QUOTE_TEXT;
             } 
             // fall through
-          case 31: break;
+          case 32: break;
           case 10: 
             { yybegin(WAITING_CRLF); return GeminiTypes.ULIST_TEXT;
             } 
             // fall through
-          case 32: break;
+          case 33: break;
           case 11: 
             { yybegin(WAITING_CRLF); return GeminiTypes.PLAIN_TEXT;
             } 
             // fall through
-          case 33: break;
-          case 12: 
-            { yybegin(WAITING_LINK_TEXT); return GeminiTypes.LINK_URL;
-            } 
-            // fall through
           case 34: break;
-          case 13: 
-            { yybegin(WAITING_CRLF); return GeminiTypes.LINK_TEXT;
+          case 12: 
+            { yybegin(WAITING_LINK_SP); return GeminiTypes.LINK_URL;
             } 
             // fall through
           case 35: break;
-          case 14: 
-            { yybegin(WAITING_PRE_CRLF); return GeminiTypes.PRE_ALT;
+          case 13: 
+            { yybegin(WAITING_LINK_TEXT); return TokenType.WHITE_SPACE;
             } 
             // fall through
           case 36: break;
-          case 15: 
-            { yybegin(WAITING_PRE_TEXT); return TokenType.WHITE_SPACE;
+          case 14: 
+            { yybegin(WAITING_CRLF); return GeminiTypes.LINK_TEXT;
             } 
             // fall through
           case 37: break;
-          case 16: 
-            { yybegin(WAITING_PRE_CRLF); return GeminiTypes.PRE_TEXT;
+          case 15: 
+            { yybegin(WAITING_PRE_CRLF); return GeminiTypes.PRE_ALT;
             } 
             // fall through
           case 38: break;
-          case 17: 
-            { yybegin(WAITING_H2_TEXT); return GeminiTypes.H2_HEADER;
+          case 16: 
+            { yybegin(WAITING_PRE_TEXT); return TokenType.WHITE_SPACE;
             } 
             // fall through
           case 39: break;
-          case 18: 
-            { yybegin(WAITING_ULIST_TEXT); return GeminiTypes.ULIST_HEADER;
+          case 17: 
+            { yybegin(WAITING_PRE_CRLF); return GeminiTypes.PRE_TEXT;
             } 
             // fall through
           case 40: break;
-          case 19: 
-            { yybegin(WAITING_LINK_URL); return GeminiTypes.LINK_HEADER;
+          case 18: 
+            { yybegin(WAITING_H2_TEXT); return GeminiTypes.H2_HEADER;
             } 
             // fall through
           case 41: break;
-          case 20: 
-            { yybegin(WAITING_H3_TEXT); return GeminiTypes.H3_HEADER;
+          case 19: 
+            { yybegin(WAITING_ULIST_TEXT); return GeminiTypes.ULIST_HEADER;
             } 
             // fall through
           case 42: break;
-          case 21: 
-            { yybegin(WAITING_PRE_ALT); return GeminiTypes.PRE_HEADER;
+          case 20: 
+            { yybegin(WAITING_LINK_URL); return GeminiTypes.LINK_HEADER;
             } 
             // fall through
           case 43: break;
-          case 22: 
-            { yybegin(WAITING_CRLF); return GeminiTypes.PRE_FOOTER;
+          case 21: 
+            { yybegin(WAITING_H3_TEXT); return GeminiTypes.H3_HEADER;
             } 
             // fall through
           case 44: break;
+          case 22: 
+            { yybegin(WAITING_PRE_ALT); return GeminiTypes.PRE_HEADER;
+            } 
+            // fall through
+          case 45: break;
+          case 23: 
+            { yybegin(WAITING_CRLF); return GeminiTypes.PRE_FOOTER;
+            } 
+            // fall through
+          case 46: break;
           default:
             zzScanError(ZZ_NO_MATCH);
           }
