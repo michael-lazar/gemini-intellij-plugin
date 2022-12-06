@@ -33,3 +33,12 @@ The gemini file SVG was created by modifying the markdown icon using Inkscape.
 
 https://jetbrains.design/intellij/resources/icons_list/
 
+### Publishing a release
+
+1. Make sure the `[Unreleased]` section in the changelog includes all changes.
+2. Update the `pluginVersion` in the `gradle.properties` file.
+3. Commit changes and push to main branch.
+4. Navigate to the [releases](https://github.com/michael-lazar/gemini-intellij-plugin/releases/) page.
+5. Find the draft release -> "Edit" -> "Publish".
+6. Wait for the release action to finish running.
+7. Merge the changelog PR.
