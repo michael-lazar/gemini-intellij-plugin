@@ -4,8 +4,6 @@
 
 ## [Unreleased]
 
-## 1.0.1
-
 ### Added
 
 - Updated project documentation and added screenshots.
